@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -15,20 +17,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: CategoryApp(),
-    );
-  }
-}
-class CategoryApp extends StatelessWidget {
-  const CategoryApp({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-          child: Center(
-        child: Container(
-          child: Text('Wecome to 30 days of Flutter'),
-        ),
-      ),
     );
   }
 }
