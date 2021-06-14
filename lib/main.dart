@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       
       routes: {
         "/":(context)=>LoginPage(),
-        MyRoute.homeRoute:(context)=>CategoryApp(),// right now we are using Myroute from utilis page. earlier it was "/home":(context)=>CategoryApp(),
+         MyRoute.homeRoute:(context)=>CategoryApp(),// right now we are using Myroute from utilis page. earlier it was "/home":(context)=>CategoryApp(),
         MyRoute.loginRoute:(context)=>LoginPage(),// right now we are using Myroute from utilis page. earlier it was "/login":(context)=>LoginPage(),
 
       },
