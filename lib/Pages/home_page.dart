@@ -1,3 +1,4 @@
+import 'package:category_app/Widgets/drawer.dart';
 import 'package:flutter/material.dart';
 class CategoryApp extends StatelessWidget {
   const CategoryApp({Key key}) : super(key: key);
@@ -14,7 +15,7 @@ class CategoryApp extends StatelessWidget {
           child: Text('Wecome to 31 days of Flutter'),
         ),
       ),
-      drawer: Drawer(),
+      drawer: Mydrawer(),
     );
   }
 }
