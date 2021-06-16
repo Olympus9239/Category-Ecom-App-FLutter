@@ -1,5 +1,6 @@
 import 'package:category_app/Pages/loginpage.dart';
 import 'package:category_app/Utilis/utilities.dart';
+import 'package:category_app/Widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'Pages/home_page.dart';
 void main() {
@@ -16,10 +17,8 @@ class MyApp extends StatelessWidget {
        debugShowCheckedModeBanner: false,
 
   
-      theme: ThemeData(
-      brightness: Brightness.light,
-        primarySwatch: Colors.deepPurple,
-      ),
+      theme: MyTheme.lightTheme(context),
+      darkTheme: MyTheme.darkTheme(context),
       initialRoute:MyRoute.homeRoute,//Using initial route hamlog directly iss page pe aayenge. e.g CategoryApp wale screen pe
       
       routes: {

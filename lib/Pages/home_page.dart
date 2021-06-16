@@ -1,4 +1,6 @@
 import 'package:category_app/Widgets/drawer.dart';
+import 'package:category_app/Widgets/item_widgets.dart';
+import 'package:category_app/models/catalog.dart';
 import 'package:flutter/material.dart';
 class CategoryApp extends StatelessWidget {
   const CategoryApp({Key key}) : super(key: key);
@@ -10,11 +12,15 @@ class CategoryApp extends StatelessWidget {
         centerTitle: true,
         title: Text('Category Apps'),
       ),
-          body: Center(
-        child: Container(
-          child: Text('Wecome to 31 days of Flutter'),
-        ),
-      ),
+          body:Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ListView.builder(          itemCount: CatalogModel.items.length,
+
+              itemBuilder: (BuildContext context, int index){
+                           return    ItemWidget(item: CatalogModel.items[index],);
+            }
+            ),
+          ),
       drawer: Mydrawer(),
     );
   }
