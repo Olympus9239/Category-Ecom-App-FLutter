@@ -19,12 +19,18 @@ class _CategoryAppState extends State<CategoryApp> {
     loadData();
   }
        loadData()async{
+         
     final catalogJson=  await rootBundle.loadString("assets/catalog.json");
       // print(catalogJson);
       final decodeData =  jsonDecode(catalogJson);
      // print(decodeData);
-     var  productData=decodeData["prodcuts"];
-     print(productData);
+     var  productData=decodeData["products"];
+    // print(productData);
+    CatalogModel.items=List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();  
+    setState(() {
+      
+    });
+
 
        }    
 
@@ -38,11 +44,14 @@ class _CategoryAppState extends State<CategoryApp> {
       ),
           body:Padding(
             padding: const EdgeInsets.all(16.0),
-            child: ListView.builder( itemCount: CatalogModel.items.length,
+            child: (CatalogModel.items!=null&&CatalogModel.items.isNotEmpty)?ListView.builder( itemCount: CatalogModel.items.length,
 
               itemBuilder: (BuildContext context, int index){
                            return    ItemWidget(item: CatalogModel.items[index],);
             }
+            )
+            :Center(
+              child: CircularProgressIndicator(),
             ),
           ),
       drawer: Mydrawer(),
