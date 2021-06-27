@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
-      initialRoute:MyRoute.homeRoute,//Using initial route hamlog directly iss page pe aayenge. e.g CategoryApp wale screen pe
+      initialRoute:MyRoute.loginRoute,//Using initial route hamlog directly iss page pe aayenge. e.g CategoryApp wale screen pe
       
       routes: {
         "/":(context)=>LoginPage(),

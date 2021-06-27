@@ -44,12 +44,33 @@ class _CategoryAppState extends State<CategoryApp> {
       ),
           body:Padding(
             padding: const EdgeInsets.all(16.0),
-            child: (CatalogModel.items!=null&&CatalogModel.items.isNotEmpty)?ListView.builder( itemCount: CatalogModel.items.length,
+            child: (CatalogModel.items!=null&&CatalogModel.items.isNotEmpty)?
+            GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                ),
+            itemBuilder: (context,index){
+              final item = CatalogModel.items[index];
+                 return Card
+                 
+                 (clipBehavior: Clip.antiAlias,
+                   shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(10)),
+                   child: GridTile(child:Image.network(item.image),
+                   header: Text(item.name),
+                   footer: Text(item.price.toString()),
+                   
+                   ),
+                   );
+                   
+            },
+            itemCount: CatalogModel.items.length,)
+            // ListView.builder( itemCount: CatalogModel.items.length,
 
-              itemBuilder: (BuildContext context, int index){
-                           return    ItemWidget(item: CatalogModel.items[index],);
-            }
-            )
+            //   itemBuilder: (BuildContext context, int index){
+            //                return    ItemWidget(item: CatalogModel.items[index],);
+            // }
+            // )
             :Center(
               child: CircularProgressIndicator(),
             ),
