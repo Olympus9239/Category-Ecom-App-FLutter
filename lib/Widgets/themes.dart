@@ -13,5 +13,8 @@ class  MyTheme{
      brightness: Brightness.dark,
       );
 
+      static Color  creamColor=Color(0xfff5f5f5);
+      static Color  darkBluishCOlor=Color(0xff403b58);
+
 
 }
