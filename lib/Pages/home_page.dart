@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:category_app/Pages/home_detail.dart';
 import 'package:category_app/Widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -87,12 +88,12 @@ class _CategoryAppState extends State<CategoryApp> {
                    
       //       },
       //       itemCount: CatalogModel.items.length,)
-      //       // ListView.builder( itemCount: CatalogModel.items.length,
+      //        ListView.builder( itemCount: CatalogModel.items.length,
 
-      //       //   itemBuilder: (BuildContext context, int index){
-      //       //                return    ItemWidget(item: CatalogModel.items[index],);
-      //       // }
-      //       // )
+      //          itemBuilder: (BuildContext context, int index){
+      //                       return    ItemWidget(item: CatalogModel.items[index],);
+      //        }
+      //        )
       //       :Center(
       //         child: CircularProgressIndicator(),
       //       ),
@@ -146,7 +147,12 @@ final Item  catalog;
       padding: Vx.m4,
       child: Row(
          children: [
-        CatalogImage(image: catalog.image),
+        InkWell(
+          onTap: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeDetail(catalog: catalog,)));
+},
+          child: Hero(
+            tag: Key(catalog.id.toString()),
+            child: CatalogImage(image: catalog.image))),
         Expanded(child:Container(
           padding: Vx.m8,
           child: Column(
@@ -164,7 +170,8 @@ final Item  catalog;
                            style: ButtonStyle(
                              shape: MaterialStateProperty.all(StadiumBorder()),
                            ),
-                            onPressed: (){}, child: "Buy".text.make())
+                            onPressed: (){
+                            }, child: "Buy".text.make())
                        ]
                      )
           ],),
