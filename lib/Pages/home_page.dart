@@ -1,7 +1,10 @@
 import 'dart:convert';
 
+import 'package:category_app/Pages/cart_page.dart';
 import 'package:category_app/Pages/home_detail.dart';
+import 'package:category_app/Utilis/utilities.dart';
 import 'package:category_app/Widgets/themes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:category_app/Widgets/drawer.dart';
@@ -42,6 +45,12 @@ class _CategoryAppState extends State<CategoryApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+              floatingActionButton: FloatingActionButton(
+                onPressed: ()=>Navigator.pushNamed(context, MyRoute.cartRoute),
+                
+              
+              child:Icon(CupertinoIcons.cart_badge_plus),
+              ),
 
              body: SafeArea(
                             child: Container(
