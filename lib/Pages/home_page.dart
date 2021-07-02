@@ -62,7 +62,7 @@ class _CategoryAppState extends State<CategoryApp> {
                        if(CatalogModel.items!=null&&CatalogModel.items.isNotEmpty)
                        CatalogList().expand()
                        else 
-                       Center(child:CircularProgressIndicator())
+                       Center(child:CircularProgressIndicator()),  
                    ],
 
                  ),
