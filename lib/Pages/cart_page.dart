@@ -1,4 +1,5 @@
 import 'package:category_app/Widgets/themes.dart';
+import 'package:category_app/models/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
  
@@ -36,13 +37,17 @@ import 'package:velocity_x/velocity_x.dart';
  class __CardTotalState extends State<_CardTotal> {
    @override
    Widget build(BuildContext context) {
+        final _cart=CartModel();
+
      return SizedBox(
        height: 200,
        child: Row(
          mainAxisAlignment: MainAxisAlignment.spaceAround,
          children: [
-                  "\$999".text.xl4.make(),
-                  ElevatedButton(onPressed: (){}, child: "Buy".text.make().p16(),)
+                  "\$${_cart.totalPrice}".text.xl4.make(),
+                  ElevatedButton(onPressed: (){
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: "Buying not Supported".text.make()));
+                  }, child: "Buy".text.make().w10(context).p16(),)
        ],),
      );
    }
@@ -56,10 +61,11 @@ import 'package:velocity_x/velocity_x.dart';
  }
  
  class __CartFulState extends State<_CartFul> {
+   final _cart=CartModel();
    @override
    Widget build(BuildContext context) {
      return ListView.builder(
-       itemCount: 5,
+       itemCount: _cart.items?.length,
        itemBuilder: (context ,index){
          
          return  ListTile(
@@ -67,7 +73,7 @@ import 'package:velocity_x/velocity_x.dart';
                 onPressed: (){},
                 ),
                 leading: Icon(Icons.done),
-                title: "Item1".text.make(),
+                title: _cart.items[index].name.text.make(),
 
 
 
