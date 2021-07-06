@@ -1,18 +1,16 @@
 import 'dart:convert';
 
-import 'package:category_app/Pages/cart_page.dart';
 import 'package:category_app/Pages/home_detail.dart';
 import 'package:category_app/Utilis/utilities.dart';
 import 'package:category_app/Widgets/themes.dart';
-import 'package:category_app/models/cart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import 'package:category_app/Widgets/drawer.dart';
-import 'package:category_app/Widgets/item_widgets.dart';
 import 'package:category_app/models/catalog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'addToCart.dart';
 class CategoryApp extends StatefulWidget {
   const CategoryApp({Key key}) : super(key: key);
 
@@ -50,7 +48,7 @@ class _CategoryAppState extends State<CategoryApp> {
                 onPressed: ()=>Navigator.pushNamed(context, MyRoute.cartRoute),
                 
               
-              child:Icon(CupertinoIcons.cart_badge_plus),
+              child:Icon(CupertinoIcons.cart),
               ),
 
              body: SafeArea(
@@ -176,7 +174,7 @@ final Item  catalog;
                        children:[
                          
                           '\$${catalog.price}'.text.xl.bold.make(),
-                          _AddToCart(catalog:catalog)
+                          AddToCart(catalog:catalog)
                        ]
                      )
           ],),
@@ -190,39 +188,7 @@ final Item  catalog;
   }
 }
 
-class _AddToCart extends StatefulWidget {
-    final Item catalog;
 
-  const _AddToCart({
-    Key key, this.catalog,
-  }) : super(key: key);
-
-  @override
-  __AddToCartState createState() => __AddToCartState();
-}
-
-class __AddToCartState extends State<_AddToCart> {
-   bool isAdded=false;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-     style: ButtonStyle(
-       shape: MaterialStateProperty.all(StadiumBorder()),
-     ),
-      onPressed: (){
-        isAdded =isAdded.toggle();
-        final _catalog=CatalogModel();
-        final _cart=CartModel();
-        _cart.catalog=_catalog;
-        _cart.add(widget.catalog);
-        
-        setState(() { });
-      
-      }, child: isAdded?Icon(Icons.done) : "Add to Cart".text.make(), );
-
-  }
-}
 class CatalogImage extends StatelessWidget {
     final String image;
 

@@ -64,13 +64,20 @@ import 'package:velocity_x/velocity_x.dart';
    final _cart=CartModel();
    @override
    Widget build(BuildContext context) {
-     return ListView.builder(
+     return _cart.items.isEmpty?"Nothing to Show".text.xl3.makeCentered():
+       ListView.builder(
        itemCount: _cart.items?.length,
        itemBuilder: (context ,index){
          
          return  ListTile(
                 trailing: IconButton(icon: Icon(Icons.remove_circle_outline_outlined),
-                onPressed: (){},
+                onPressed: (){
+                  _cart.remove(_cart.items[index]); 
+                  setState(() {
+                     
+                  });
+
+                },
                 ),
                 leading: Icon(Icons.done),
                 title: _cart.items[index].name.text.make(),
